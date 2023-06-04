@@ -26,29 +26,23 @@ Video Lectures
 
 For Developers
 ============
-You can also see [Python](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Py), [Java](https://github.com/starlangsoftware/TurkishNamedEntityRecognition), [C++](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-CPP), [Swift](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Swift), [Js](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Js), or [C#](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-CS) repository.
+You can also see [Python](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Py), [Cython](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Cy), [Java](https://github.com/starlangsoftware/TurkishNamedEntityRecognition), [C++](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-CPP), [Swift](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Swift), [Js](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-Js), or [C#](https://github.com/starlangsoftware/TurkishNamedEntityRecognition-CS) repository.
 
 ## Requirements
 
-* [Python 3.7 or higher](#python)
+* [C Compiler](#c)
 * [Git](#git)
 
-### Python 
 
-To check if you have a compatible version of Python installed, use the following command:
-
-    python -V
-    
-You can find the latest version of Python [here](https://www.python.org/downloads/).
+### C
+To check if you have compatible C Compiler installed,
+* Open CLion IDE 
+* Preferences >Build,Execution,Deployment > Toolchain  
 
 ### Git
 
 Install the [latest version of Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-## Pip Install
-
-	pip3 install NlpToolkit-NamedEntityRecognition-Cy
-	
 ## Download Code
 
 In order to work on code, create a fork from GitHub page. 
@@ -56,37 +50,41 @@ Use Git for cloning the code to your local or below line for Ubuntu:
 
 	git clone <your-fork-git-link>
 
-A directory called DataStructure will be created. Or you can use below link for exploring the code:
+A directory called Util-C will be created. Or you can use below link for exploring the code:
 
-	git clone github.com/starlangsoftware/TurkishNamedEntityRecognition-Cy.git
+	git clone https://github.com/starlangsoftware/TurkishNamedEntityRecognition-C.git
 
-## Open project with Pycharm IDE
+## Open project with CLion IDE
 
-Steps for opening the cloned project:
+To import projects from Git with version control:
 
-* Start IDE
-* Select **File | Open** from main menu
-* Choose `TurkishNamedEntityRecognition-Cy` file
-* Select open as project option
+* Open CLion IDE , select Get From Version Control.
+
+* In the Import window, click URL tab and paste github URL.
+
+* Click open as Project.
+
+Result: The imported project is listed in the Project Explorer view and files are loaded.
+
+
+## Compile
+
+**From IDE**
+
+After being done with the downloading and opening project, select **Build Project** option from **Build** menu.
 
 Detailed Description
 ============
-
-+ [Gazetteer](#gazetteer)
 
 ## Gazetteer
 
 Bir Gazetter yüklemek için
 
-	Gazetteer(self, name: str, fileName: str)
-
-Hazır Gazetteerleri kullanmak için
-
-	AutoNER()
+	Gazetteer_ptr create_gazetteer(const char *name, const char *file_name)
 
 Bir Gazetteer'de bir kelime var mı diye kontrol etmek için
 
-	contains(self, word: str) -> bool
+	bool gazetteer_contains(const Gazetteer *gazetteer, const char *word)
 
 # Cite
 
