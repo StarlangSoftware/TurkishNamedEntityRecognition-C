@@ -6,9 +6,9 @@
 #include "NamedEntityType.h"
 
 /**
- * Function to convert a string entity type to {@link NamedEntityType} type.
+ * Function to convert a string entity type to NamedEntityType type.
  * @param entityType Entity type in string form
- * @return Entity type in {@link NamedEntityType} form
+ * @return Entity type in NamedEntityType form
  */
 Named_entity_type get_named_entity_type(const char *entity_type) {
     char* upperCase = to_uppercase(entity_type);
@@ -40,8 +40,8 @@ Named_entity_type get_named_entity_type(const char *entity_type) {
 }
 
 /**
- * Function to convert a {@link NamedEntityType} to string form.
- * @param entityType Entity type in {@link NamedEntityType} form
+ * Function to convert a NamedEntityType to string form.
+ * @param entityType Entity type in NamedEntityType form
  * @return Entity type in string form
  */
 char *named_entity_type_to_string(Named_entity_type named_entity_type) {

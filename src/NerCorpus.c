@@ -8,7 +8,7 @@
 #include "NamedEntitySentence.h"
 
 /**
- * Another constructor of {@link NERCorpus} which takes a fileName of the corpus as an input, reads the
+ * Another constructor of NERCorpus which takes a fileName of the corpus as an input, reads the
  * corpus from that file.
  *
  * @param fileName Name of the corpus file.
