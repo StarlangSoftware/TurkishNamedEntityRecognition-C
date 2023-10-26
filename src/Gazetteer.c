@@ -21,17 +21,11 @@ Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
     result->name = str_copy(result->name, name);
     result->data = create_hash_set((unsigned int (*)(const void *, int)) hash_function_string,
                                    (int (*)(const void *, const void *)) compare_string);
-    FILE* input_file;
-    char line[MAX_LINE_LENGTH];
-    input_file = fopen(file_name, "r");
-    char* input = fgets(line, MAX_LINE_LENGTH, input_file);
-    while (input != NULL){
-        line[strcspn(line, "\n")] = 0;
-        char* word = str_copy(word, line);
-        hash_set_insert(result->data, word);
-        input = fgets(line, MAX_LINE_LENGTH, input_file);
+    Array_list_ptr lines = read_lines(file_name);
+    for (int i = 0; i < lines->size; i++){
+        hash_set_insert(result->data, array_list_get(lines, i));
     }
-    fclose(input_file);
+    free_array_list(lines, NULL);
     return result;
 }
 

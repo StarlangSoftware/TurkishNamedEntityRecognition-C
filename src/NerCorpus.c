@@ -4,6 +4,7 @@
 
 #include <FileUtils.h>
 #include <string.h>
+#include <stdlib.h>
 #include "NerCorpus.h"
 #include "NamedEntitySentence.h"
 
@@ -14,16 +15,11 @@
  * @param fileName Name of the corpus file.
  */
 Corpus_ptr create_ner_corpus(const char *file_name) {
-    FILE* input_file;
-    char line[MAX_LINE_LENGTH];
     Corpus_ptr result = create_corpus();
-    input_file = fopen(file_name, "r");
-    char* input = fgets(line, MAX_LINE_LENGTH, input_file);
-    while (input != NULL){
-        line[strcspn(line, "\n")] = 0;
-        corpus_add_sentence(result, create_named_entity_sentence(line));
-        input = fgets(line, MAX_LINE_LENGTH, input_file);
+    Array_list_ptr lines = read_lines(file_name);
+    for (int i = 0; i < lines->size; i++){
+        corpus_add_sentence(result, create_named_entity_sentence(array_list_get(lines, i)));
     }
-    fclose(input_file);
+    free_array_list(lines, free);
     return result;
 }
