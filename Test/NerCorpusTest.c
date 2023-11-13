@@ -13,5 +13,5 @@ int main(){
     if (corpus_number_of_words(ner_corpus) != 492233){
         printf("Error in ner corpus test 2\n");
     }
-    free_corpus(ner_corpus);
+    free_ner_corpus(ner_corpus);
 }

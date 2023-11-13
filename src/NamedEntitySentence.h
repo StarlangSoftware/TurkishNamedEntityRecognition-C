@@ -9,4 +9,6 @@
 
 Sentence_ptr create_named_entity_sentence(char *sentence);
 
+void free_name_entity_sentence(Sentence_ptr sentence);
+
 #endif //NAMEDENTITYRECOGNITION_NAMEDENTITYSENTENCE_H

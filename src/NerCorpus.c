@@ -23,3 +23,10 @@ Corpus_ptr create_ner_corpus(const char *file_name) {
     free_array_list(lines, free);
     return result;
 }
+
+void free_ner_corpus(Corpus_ptr corpus) {
+    free_array_list(corpus->sentences, (void (*)(void *)) free_name_entity_sentence);
+    free_array_list(corpus->paragraphs, NULL);
+    free_counter_hash_map(corpus->word_list);
+    free(corpus);
+}

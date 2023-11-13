@@ -9,4 +9,6 @@
 
 Corpus_ptr create_ner_corpus(const char* file_name);
 
+void free_ner_corpus(Corpus_ptr corpus);
+
 #endif //NAMEDENTITYRECOGNITION_NERCORPUS_H

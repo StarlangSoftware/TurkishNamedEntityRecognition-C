@@ -2,6 +2,7 @@
 // Created by Olcay Taner YILDIZ on 4.06.2023.
 //
 
+#include <stdlib.h>
 #include "NamedEntitySentence.h"
 #include "NamedEntityType.h"
 #include "NamedEntityWord.h"
@@ -59,4 +60,9 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
     }
     free_array_list(word_array, (void (*)(void *)) free_string_ptr);
     return result;
+}
+
+void free_name_entity_sentence(Sentence_ptr sentence) {
+    free_array_list(sentence->words, (void (*)(void *)) free_named_entity_word);
+    free(sentence);
 }
