@@ -34,7 +34,7 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
                             array_list_add(result->words, create_named_entity_word(candidate->s, type));
                         }
                         free_string_ptr(candidate);
-                        type = NONE;
+                        type = NER_NONE;
                     } else {
                         candidate = substring2(word->s, str_find_c(word->s, ">") + 1);
                         if (!string_empty(candidate)){
@@ -48,7 +48,7 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
                             array_list_add(result->words, create_named_entity_word(candidate->s, type));
                         }
                         free_string_ptr(candidate);
-                        type = NONE;
+                        type = NER_NONE;
                     } else {
                         if (!string_empty(word)){
                             array_list_add(result->words, create_named_entity_word(word->s, type));

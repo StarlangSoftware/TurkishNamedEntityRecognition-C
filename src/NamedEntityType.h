@@ -6,7 +6,7 @@
 #define NAMEDENTITYRECOGNITION_NAMEDENTITYTYPE_H
 
 enum named_entity_type{
-    NONE, PERSON, ORGANIZATION, LOCATION, TIME, MONEY
+    NER_NONE, NER_PERSON, NER_ORGANIZATION, NER_LOCATION, NER_TIME, NER_MONEY
 };
 
 typedef enum named_entity_type Named_entity_type;

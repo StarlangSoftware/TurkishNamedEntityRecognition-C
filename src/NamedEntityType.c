@@ -13,24 +13,24 @@
 Named_entity_type get_named_entity_type(const char *entity_type) {
     char* upperCase = to_uppercase(entity_type);
     if (strlen(upperCase) == 0){
-        return NONE;
+        return NER_NONE;
     } else {
-        if (strcmp(upperCase, "PERSON") == 0){
-            return PERSON;
+        if (strcmp(upperCase, "NER_PERSON") == 0){
+            return NER_PERSON;
         } else {
-            if (strcmp(upperCase, "LOCATION") == 0){
-                return LOCATION;
+            if (strcmp(upperCase, "NER_LOCATION") == 0){
+                return NER_LOCATION;
             } else {
-                if (strcmp(upperCase, "ORGANIZATION") == 0){
-                    return ORGANIZATION;
+                if (strcmp(upperCase, "NER_ORGANIZATION") == 0){
+                    return NER_ORGANIZATION;
                 } else {
-                    if (strcmp(upperCase, "TIME") == 0){
-                        return TIME;
+                    if (strcmp(upperCase, "NER_TIME") == 0){
+                        return NER_TIME;
                     } else {
-                        if (strcmp(upperCase, "MONEY") == 0){
-                            return MONEY;
+                        if (strcmp(upperCase, "NER_MONEY") == 0){
+                            return NER_MONEY;
                         } else {
-                            return NONE;
+                            return NER_NONE;
                         }
                     }
                 }
@@ -46,18 +46,18 @@ Named_entity_type get_named_entity_type(const char *entity_type) {
  */
 char *named_entity_type_to_string(Named_entity_type named_entity_type) {
     switch (named_entity_type){
-        case PERSON:
-            return "PERSON";
-        case LOCATION:
-            return "LOCATION";
-        case ORGANIZATION:
-            return "ORGANIZATION";
-        case TIME:
-            return "TIME";
-        case MONEY:
-            return "MONEY";
+        case NER_PERSON:
+            return "NER_PERSON";
+        case NER_LOCATION:
+            return "NER_LOCATION";
+        case NER_ORGANIZATION:
+            return "NER_ORGANIZATION";
+        case NER_TIME:
+            return "NER_TIME";
+        case NER_MONEY:
+            return "NER_MONEY";
         default:
-            return "NONE";
+            return "NER_NONE";
     }
 }
 
