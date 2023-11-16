@@ -23,6 +23,6 @@ Slot_ptr create_slot2(const char* slot);
 
 void free_slot(Slot_ptr slot);
 
-String_ptr slot_to_string(Slot_ptr slot);
+char* slot_to_string(Slot_ptr slot);
 
 #endif //NAMEDENTITYRECOGNITION_SLOT_H

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <StringUtils.h>
 #include <string.h>
+#include <stdio.h>
 #include "Slot.h"
 #include "Dictionary/Word.h"
 
@@ -35,16 +36,20 @@ Slot_ptr create_slot2(const char *slot) {
     return result;
 }
 
-String_ptr slot_to_string(Slot_ptr slot) {
+char* slot_to_string(Slot_ptr slot) {
+    char* result;
     if (slot->type == O){
-        return create_string2("O");
+        result = malloc(2 * sizeof(char));
+        sprintf(result, "O");
     } else {
+        result = malloc((3 + strlen(slot->tag)) * sizeof(char));
         if (slot->type == B){
-            return create_string3("B-", slot->tag);
+            sprintf(result, "B-%s", slot->tag);
         } else {
-            return create_string3("I-", slot->tag);
+            sprintf(result, "I-%s", slot->tag);
         }
     }
+    return result;
 }
 
 void free_slot(Slot_ptr slot) {
