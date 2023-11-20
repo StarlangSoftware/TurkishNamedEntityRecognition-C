@@ -19,13 +19,7 @@
 Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
     Gazetteer_ptr result = malloc(sizeof(Gazetteer));
     result->name = str_copy(result->name, name);
-    result->data = create_hash_set((unsigned int (*)(const void *, int)) hash_function_string,
-                                   (int (*)(const void *, const void *)) compare_string);
-    Array_list_ptr lines = read_lines(file_name);
-    for (int i = 0; i < lines->size; i++){
-        hash_set_insert(result->data, array_list_get(lines, i));
-    }
-    free_array_list(lines, NULL);
+    result->data = read_hash_set(file_name);
     return result;
 }
 
