@@ -5,9 +5,7 @@
 #include <stdlib.h>
 #include <StringUtils.h>
 #include <Dictionary/Word.h>
-#include <stdio.h>
 #include <FileUtils.h>
-#include <string.h>
 #include "Gazetteer.h"
 
 /**
