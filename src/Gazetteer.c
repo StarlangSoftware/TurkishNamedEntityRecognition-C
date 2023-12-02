@@ -6,6 +6,7 @@
 #include <StringUtils.h>
 #include <Dictionary/Word.h>
 #include <FileUtils.h>
+#include <Memory/Memory.h>
 #include "Gazetteer.h"
 
 /**
@@ -15,16 +16,16 @@
  * @param fileName File name of the gazetteer data.
  */
 Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
-    Gazetteer_ptr result = malloc(sizeof(Gazetteer));
+    Gazetteer_ptr result = malloc_(sizeof(Gazetteer), "create_gazetteer");
     result->name = str_copy(result->name, name);
     result->data = read_hash_set(file_name);
     return result;
 }
 
 void free_gazetteer(Gazetteer_ptr gazetteer) {
-    free_hash_set(gazetteer->data, free);
-    free(gazetteer->name);
-    free(gazetteer);
+    free_hash_set(gazetteer->data, free_);
+    free_(gazetteer->name);
+    free_(gazetteer);
 }
 
 /**
@@ -36,6 +37,6 @@ void free_gazetteer(Gazetteer_ptr gazetteer) {
 bool gazetteer_contains(const Gazetteer *gazetteer, const char *word) {
     char *lowerCase = to_lowercase(word);
     bool result = hash_set_contains(gazetteer->data, lowerCase);
-    free(lowerCase);
+    free_(lowerCase);
     return result;
 }

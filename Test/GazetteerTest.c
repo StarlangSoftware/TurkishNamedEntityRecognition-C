@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <Memory/Memory.h>
 #include "../src/Gazetteer.h"
 
 int main(){

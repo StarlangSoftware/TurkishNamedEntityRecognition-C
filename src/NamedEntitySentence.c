@@ -2,7 +2,7 @@
 // Created by Olcay Taner YILDIZ on 4.06.2023.
 //
 
-#include <stdlib.h>
+#include <Memory/Memory.h>
 #include "NamedEntitySentence.h"
 #include "NamedEntityType.h"
 #include "NamedEntityWord.h"
@@ -40,6 +40,7 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
                         if (!string_empty(candidate)){
                             array_list_add(result->words, create_named_entity_word(candidate->s, type));
                         }
+                        free_string_ptr(candidate);
                     }
                 } else {
                     if (ends_with(word->s, "e_enamex>")){
@@ -64,5 +65,5 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
 
 void free_name_entity_sentence(Sentence_ptr sentence) {
     free_array_list(sentence->words, (void (*)(void *)) free_named_entity_word);
-    free(sentence);
+    free_(sentence);
 }

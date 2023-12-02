@@ -5,6 +5,7 @@
 #include <FileUtils.h>
 #include <string.h>
 #include <stdlib.h>
+#include <Memory/Memory.h>
 #include "NerCorpus.h"
 #include "NamedEntitySentence.h"
 
@@ -20,7 +21,7 @@ Corpus_ptr create_ner_corpus(const char *file_name) {
     for (int i = 0; i < lines->size; i++){
         corpus_add_sentence(result, create_named_entity_sentence(array_list_get(lines, i)));
     }
-    free_array_list(lines, free);
+    free_array_list(lines, free_);
     return result;
 }
 
@@ -28,5 +29,5 @@ void free_ner_corpus(Corpus_ptr corpus) {
     free_array_list(corpus->sentences, (void (*)(void *)) free_name_entity_sentence);
     free_array_list(corpus->paragraphs, NULL);
     free_counter_hash_map(corpus->word_list);
-    free(corpus);
+    free_(corpus);
 }

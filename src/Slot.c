@@ -6,18 +6,19 @@
 #include <StringUtils.h>
 #include <string.h>
 #include <stdio.h>
+#include <Memory/Memory.h>
 #include "Slot.h"
 #include "Dictionary/Word.h"
 
 Slot_ptr create_slot(Slot_type type, const char *tag) {
-    Slot_ptr result = malloc(sizeof(Slot));
+    Slot_ptr result = malloc_(sizeof(Slot), "create_slot");
     result->type = type;
     result->tag = str_copy(result->tag, tag);
     return result;
 }
 
 Slot_ptr create_slot2(const char *slot) {
-    Slot_ptr result = malloc(sizeof(Slot));
+    Slot_ptr result = malloc_(sizeof(Slot), "create_slot2");
     if (strcmp(slot, "O") == 0 || strcmp(slot, "o") == 0){
         result->type = O;
         result->tag = NULL;
@@ -39,10 +40,10 @@ Slot_ptr create_slot2(const char *slot) {
 char* slot_to_string(Slot_ptr slot) {
     char* result;
     if (slot->type == O){
-        result = malloc(2 * sizeof(char));
+        result = malloc_(2 * sizeof(char), "slot_to_string");
         sprintf(result, "O");
     } else {
-        result = malloc((3 + strlen(slot->tag)) * sizeof(char));
+        result = malloc_((3 + strlen(slot->tag)) * sizeof(char), "slot_to_string");
         if (slot->type == B){
             sprintf(result, "B-%s", slot->tag);
         } else {
@@ -53,6 +54,6 @@ char* slot_to_string(Slot_ptr slot) {
 }
 
 void free_slot(Slot_ptr slot) {
-    free(slot->tag);
-    free(slot);
+    free_(slot->tag);
+    free_(slot);
 }

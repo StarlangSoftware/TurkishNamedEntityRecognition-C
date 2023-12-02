@@ -3,6 +3,7 @@
 //
 #include <Dictionary/Word.h>
 #include <string.h>
+#include <Memory/Memory.h>
 #include "NamedEntityType.h"
 
 /**
@@ -11,32 +12,35 @@
  * @return Entity type in NamedEntityType form
  */
 Named_entity_type get_named_entity_type(const char *entity_type) {
+    Named_entity_type result;
     char* upperCase = to_uppercase(entity_type);
     if (strlen(upperCase) == 0){
-        return NER_NONE;
+        result = NER_NONE;
     } else {
         if (strcmp(upperCase, "NER_PERSON") == 0){
-            return NER_PERSON;
+            result = NER_PERSON;
         } else {
             if (strcmp(upperCase, "NER_LOCATION") == 0){
-                return NER_LOCATION;
+                result = NER_LOCATION;
             } else {
                 if (strcmp(upperCase, "NER_ORGANIZATION") == 0){
-                    return NER_ORGANIZATION;
+                    result = NER_ORGANIZATION;
                 } else {
                     if (strcmp(upperCase, "NER_TIME") == 0){
-                        return NER_TIME;
+                        result = NER_TIME;
                     } else {
                         if (strcmp(upperCase, "NER_MONEY") == 0){
-                            return NER_MONEY;
+                            result = NER_MONEY;
                         } else {
-                            return NER_NONE;
+                            result = NER_NONE;
                         }
                     }
                 }
             }
         }
     }
+    free_(upperCase);
+    return result;
 }
 
 /**
