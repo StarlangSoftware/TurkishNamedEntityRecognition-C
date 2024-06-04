@@ -10,6 +10,13 @@
 #include "Slot.h"
 #include "Dictionary/Word.h"
 
+/**
+ * Constructor for the Slot object. Slot object stores the information about more specific entities. The slot
+ * type represents the beginning, inside or outside the slot, whereas tag represents the entity tag of the
+ * slot.
+ * @param type Type of the slot. B, I or O for beginning, inside, outside the slot respectively.
+ * @param tag Tag of the slot.
+ */
 Slot_ptr create_slot(Slot_type type, const char *tag) {
     Slot_ptr result = malloc_(sizeof(Slot), "create_slot");
     result->type = type;
@@ -17,6 +24,12 @@ Slot_ptr create_slot(Slot_type type, const char *tag) {
     return result;
 }
 
+/**
+ * Second constructor of the slot for a given slot string. A Slot string consists of slot type and slot tag
+ * separated with '-'. For example B-Person represents the beginning of a person. For outside tagging simple 'O' is
+ * used.
+ * @param slot Input slot string.
+ */
 Slot_ptr create_slot2(const char *slot) {
     Slot_ptr result = malloc_(sizeof(Slot), "create_slot2");
     if (strcmp(slot, "O") == 0 || strcmp(slot, "o") == 0){
@@ -37,6 +50,10 @@ Slot_ptr create_slot2(const char *slot) {
     return result;
 }
 
+/**
+ * slot_to_string method of the slot.
+ * @return Type and tag separated with '-'. If the type is outside, it returns 'O'.
+ */
 char* slot_to_string(Slot_ptr slot) {
     char* result;
     if (slot->type == O){
@@ -53,6 +70,10 @@ char* slot_to_string(Slot_ptr slot) {
     return result;
 }
 
+/**
+ * Destructor of the Slot object. Frees memory allocated for tag.
+ * @param slot Slot object to deallocate.
+ */
 void free_slot(Slot_ptr slot) {
     free_(slot->tag);
     free_(slot);
