@@ -22,6 +22,10 @@ Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
     return result;
 }
 
+/**
+ * Frees memory allocated for the Gazetteer object. Frees name and hash set data.
+ * @param gazetteer Gazetteer object to deallocate.
+ */
 void free_gazetteer(Gazetteer_ptr gazetteer) {
     free_hash_set(gazetteer->data, free_);
     free_(gazetteer->name);

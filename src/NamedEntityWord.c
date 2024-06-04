@@ -19,6 +19,10 @@ Named_entity_word_ptr create_named_entity_word(const char *name, Named_entity_ty
     return result;
 }
 
+/**
+ * Frees memory allocated for a namaned entity word.
+ * @param named_entity_word Named entity word to deallocate.
+ */
 void free_named_entity_word(Named_entity_word_ptr named_entity_word) {
     free_(named_entity_word->name);
     free_(named_entity_word);

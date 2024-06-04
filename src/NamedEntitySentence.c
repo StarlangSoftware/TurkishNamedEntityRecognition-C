@@ -63,6 +63,10 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
     return result;
 }
 
+/**
+ * Frees memory allocates for a named entity sentence. Deallocates the words array.
+ * @param sentence Sentence to deallocate.
+ */
 void free_name_entity_sentence(Sentence_ptr sentence) {
     free_array_list(sentence->words, (void (*)(void *)) free_named_entity_word);
     free_(sentence);

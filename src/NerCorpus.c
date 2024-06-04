@@ -25,6 +25,10 @@ Corpus_ptr create_ner_corpus(const char *file_name) {
     return result;
 }
 
+/**
+ * Frees memory allocated for Ner corpus. Frees memory allocated for sentence and paragraph array lists.
+ * @param corpus NER corpus to deallocate.
+ */
 void free_ner_corpus(Corpus_ptr corpus) {
     free_array_list(corpus->sentences, (void (*)(void *)) free_name_entity_sentence);
     free_array_list(corpus->paragraphs, NULL);
