@@ -13,7 +13,7 @@
  * Another constructor of NERCorpus which takes a fileName of the corpus as an input, reads the
  * corpus from that file.
  *
- * @param fileName Name of the corpus file.
+ * @param file_name Name of the corpus file.
  */
 Corpus_ptr create_ner_corpus(const char *file_name) {
     Corpus_ptr result = create_corpus();

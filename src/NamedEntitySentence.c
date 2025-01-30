@@ -16,7 +16,7 @@ Sentence_ptr create_named_entity_sentence(char* sentence) {
     Sentence_ptr result = create_sentence();
     Array_list_ptr word_array = split(sentence);
     String_ptr entity_type, candidate;
-    Named_entity_type type;
+    Named_entity_type type = NER_NONE;
     for (int i = 0; i < word_array->size; i++){
         String_ptr word = array_list_get(word_array, i);
         if (!string_empty(word)){

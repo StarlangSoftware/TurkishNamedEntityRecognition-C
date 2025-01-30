@@ -2,7 +2,6 @@
 // Created by Olcay Taner YILDIZ on 3.06.2023.
 //
 
-#include <stdlib.h>
 #include <StringUtils.h>
 #include <Dictionary/Word.h>
 #include <FileUtils.h>
@@ -13,7 +12,7 @@
  * A constructor for a specific gazetteer. The constructor takes name of the gazetteer and file name of the
  * gazetteer as input, reads the gazetteer from the input file.
  * @param name Name of the gazetteer. This name will be used in programming to separate different gazetteers.
- * @param fileName File name of the gazetteer data.
+ * @param file_name File name of the gazetteer data.
  */
 Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
     Gazetteer_ptr result = malloc_(sizeof(Gazetteer), "create_gazetteer");
@@ -35,6 +34,7 @@ void free_gazetteer(Gazetteer_ptr gazetteer) {
 /**
  * The most important method in Gazetteer class. Checks if the given word exists in the gazetteer. The check
  * is done in lowercase form.
+ * @param gazetteer Current gazetteer object
  * @param word Word to be search in Gazetteer.
  * @return True if the word is in the Gazetteer, False otherwise.
  */
