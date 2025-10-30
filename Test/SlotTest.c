@@ -4,9 +4,12 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <Memory/Memory.h>
+
 #include "../src/Slot.h"
 
 int main(){
+    start_memory_check();
     Slot_ptr slot1 = create_slot2("B-depart_date.month_name");
     if (slot1->type != B){
         printf("Error in Slot 1");
@@ -28,4 +31,5 @@ int main(){
         printf("Error in Slot 5");
     }
     free_slot(slot3);
+    end_memory_check();
 }

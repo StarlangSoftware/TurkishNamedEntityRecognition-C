@@ -7,6 +7,7 @@
 #include "../src/Gazetteer.h"
 
 int main(){
+    start_memory_check();
     Gazetteer_ptr gazetteer = create_gazetteer("location", "gazetteer-location.txt");
     if (!gazetteer_contains(gazetteer, "bağdat")){
         printf("Error in Gazetteer test 1\n");
@@ -51,4 +52,5 @@ int main(){
         printf("Error in Gazetteer test 7\n");
     }
     free_gazetteer(gazetteer);
+    end_memory_check();
 }

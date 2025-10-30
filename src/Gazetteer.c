@@ -15,7 +15,7 @@
  * @param file_name File name of the gazetteer data.
  */
 Gazetteer_ptr create_gazetteer(const char *name, const char *file_name) {
-    Gazetteer_ptr result = malloc_(sizeof(Gazetteer), "create_gazetteer");
+    Gazetteer_ptr result = malloc_(sizeof(Gazetteer));
     result->name = str_copy(result->name, name);
     result->data = read_hash_set(file_name);
     return result;

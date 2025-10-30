@@ -18,7 +18,7 @@
  * @param tag Tag of the slot.
  */
 Slot_ptr create_slot(Slot_type type, const char *tag) {
-    Slot_ptr result = malloc_(sizeof(Slot), "create_slot");
+    Slot_ptr result = malloc_(sizeof(Slot));
     result->type = type;
     result->tag = str_copy(result->tag, tag);
     return result;
@@ -31,7 +31,7 @@ Slot_ptr create_slot(Slot_type type, const char *tag) {
  * @param slot Input slot string.
  */
 Slot_ptr create_slot2(const char *slot) {
-    Slot_ptr result = malloc_(sizeof(Slot), "create_slot2");
+    Slot_ptr result = malloc_(sizeof(Slot));
     if (strcmp(slot, "O") == 0 || strcmp(slot, "o") == 0){
         result->type = O;
         result->tag = NULL;
@@ -57,10 +57,10 @@ Slot_ptr create_slot2(const char *slot) {
 char* slot_to_string(Slot_ptr slot) {
     char* result;
     if (slot->type == O){
-        result = malloc_(2 * sizeof(char), "slot_to_string");
+        result = malloc_(2 * sizeof(char));
         sprintf(result, "O");
     } else {
-        result = malloc_((3 + strlen(slot->tag)) * sizeof(char), "slot_to_string");
+        result = malloc_((3 + strlen(slot->tag)) * sizeof(char));
         if (slot->type == B){
             sprintf(result, "B-%s", slot->tag);
         } else {

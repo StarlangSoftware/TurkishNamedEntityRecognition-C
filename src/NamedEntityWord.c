@@ -12,7 +12,7 @@
  * @param named_entity_type NamedEntityType of the word
  */
 Named_entity_word_ptr create_named_entity_word(const char *name, Named_entity_type named_entity_type) {
-    Named_entity_word_ptr result = malloc_(sizeof(Named_entity_word), "create_named_entity_word");
+    Named_entity_word_ptr result = malloc_(sizeof(Named_entity_word));
     result->name = str_copy(result->name, name);
     result->named_entity_type = named_entity_type;
     return result;
